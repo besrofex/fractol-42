@@ -1,28 +1,24 @@
 NAME = fractol
-MLX = libmlx.dylib
 CC = cc
 RM = rm -f
 FLAGS = -Wall -Wextra -Werror
+MLX_PATH = /usr/local/include
+LIBS = -L/usr/local/lib -lmlx -framework OpenGL -framework AppKit
 SRCS = $(wildcard *.c)
 OBJ = $(SRCS:.c=.o)
 
-all : $(MLX) $(NAME) 
-
-$(MLX) :
-	@make -C mlx/
+all : $(NAME) 
 
 $(NAME) : $(OBJ)
-	$(CC) $(OBJ) mlx/libmlx.dylib -o $(NAME)
+	$(CC) $(OBJ) -o $(NAME) $(LIBS)
 
-%.o : %.cc fractol.h /mlx/mlx.h
-	$(CC) $(FLAGS) -c $< -o $@
+%.o : %.cc fractol.h 
+	$(CC) $(FLAGS) -I$(MLX_PATH) -c $< -o $@
 
 clean :
-	@make clean -C mlx/
 	$(RM) $(OBJ)
 
 fclean : clean
-	@make fclean -C mlx/
 	$(RM) $(NAME)
 
 re : fclean all

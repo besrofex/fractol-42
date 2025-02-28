@@ -6,7 +6,7 @@
 /*   By: ylabser <ylabser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 15:28:34 by ylabser           #+#    #+#             */
-/*   Updated: 2025/02/28 20:08:42 by ylabser          ###   ########.fr       */
+/*   Updated: 2025/02/28 22:11:25 by ylabser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static void	my_pixel_put(int x, int y, t_img *img, int color)
 {
 	int	offset;
 
+	if (x <  0 || x >= 800 || y < 0 || y >= 800)
+		return ;
 	offset = (y * img->line_len) + (x * (img->bpp / 8));
 	*(unsigned int *)(img->img_ptr + offset) = color;
 }
@@ -42,8 +44,8 @@ static void handel_pixel(int x, int y, t_fractal *fractal)
    int         color;
 
    i = 0;
-   z.x = (map(x, -2, 2, 0, 800) * fractal->zoom) + fractal->shift_x;
-   z.y = (map(y, -2, 2, 0, 800) * fractal->zoom) + fractal->shift_y;
+   z.x = ((map(x, -2, 2, 0, 800) * fractal->zoom)) + fractal->shift_x;
+   z.y = ((map(y, -2, 2, 0, 800) * fractal->zoom)) + fractal->shift_y;
    mandel_vs_julia(&z, &c, fractal);
 	while (i < 42)
 	{
