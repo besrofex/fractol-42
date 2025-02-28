@@ -6,7 +6,7 @@
 /*   By: ylabser <ylabser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 15:28:34 by ylabser           #+#    #+#             */
-/*   Updated: 2025/02/28 16:49:16 by ylabser          ###   ########.fr       */
+/*   Updated: 2025/02/28 20:08:42 by ylabser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,5 @@ void fractal_render(t_fractal *fractal)
       }
       y++;
    }
+	mlx_put_image_to_window(fractal->mlx_connection, fractal->mlx_window, fractal->image.img_ptr, 0, 0);
 }

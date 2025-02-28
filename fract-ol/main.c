@@ -6,7 +6,7 @@
 /*   By: ylabser <ylabser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:33:32 by ylabser           #+#    #+#             */
-/*   Updated: 2025/02/28 15:28:27 by ylabser          ###   ########.fr       */
+/*   Updated: 2025/02/28 20:12:54 by ylabser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int ac, char **av)
 		}
 		fractal_init(&fractal);
 		fractal_render(&fractal);
+		mlx_loop(fractal.mlx_connection);
 	}
 	else
 	{
