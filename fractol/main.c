@@ -20,7 +20,13 @@ int	main(int ac, char **av)
 		|| (4 == ac && ft_strncmp(av[1], "Julia", 5) == 0))
 	{
 		fractal.name = av[1];
+		if (ft_strncmp(fractal.name, "julia", 5) == 0)
+		{
+			fractal.shift_x = atodbl(av[2]);
+			fractal.shift_y = atodbl(av[3]);
+		}
 		fractal_init(&fractal);
+		fractal_render(&fractal);
 	}
 	else
 	{
