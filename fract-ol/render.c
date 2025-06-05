@@ -36,7 +36,7 @@ static void mandel_vs_julia(t_complex *z, t_complex *c, t_fractal *fractal)
    }
 }
 
-static void handel_pixel(int x, int y, t_fractal *fractal)
+static int handel_pixel(int x, int y, t_fractal *fractal)
 {
    t_complex   z;
    t_complex   c;
@@ -50,7 +50,7 @@ static void handel_pixel(int x, int y, t_fractal *fractal)
 	while (i < fractal->iter)
 	{
 		z = sum_complex(square_complex(z), c);
-		if ((z.x * z.x) + (z.y * z.y) > 2)
+		if ((z.x * z.x) + (z.y * z.y) > 4)
 			return (i * fractal->color);
 		i++;
 	}
@@ -59,7 +59,7 @@ static void handel_pixel(int x, int y, t_fractal *fractal)
 
 void fractal_render(t_fractal *fractal)
 {
-int   coolor;
+int   color;
    int   x;
    int   y;
 

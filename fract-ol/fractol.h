@@ -65,7 +65,7 @@ double	atodbl(char *str);
 
 // moves
 int	key_handler(int key, void *param);
-void	close_handler(t_fractal *fractal);
-int	mouse_handler(int key, t_fractal *fractal);
+int	close_handler(t_fractal *fractal);
+int	mouse_handler(int key,int x ,int y, void *param);
 
 #endif

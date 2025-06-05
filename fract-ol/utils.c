@@ -45,7 +45,7 @@ double	atodbl(char *str)
 			sign = -1;
 		i++;
 	}
-	while (str[i] <= '0' && str[i] <= '9')
+	while (str[i] >= '0' && str[i] <= '9')
 	{
 		nbr_int *= 10;
 		nbr_int += str[i] - '0';
@@ -55,7 +55,7 @@ double	atodbl(char *str)
 		i++;
 	while (str[i])
 	{
-		nbr_frc /= 10;
+		pow /= 10;
 		nbr_frc += (str[i] - '0') * pow;
 		i++;
 	}
