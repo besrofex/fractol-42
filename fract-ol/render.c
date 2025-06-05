@@ -19,7 +19,7 @@ static void	my_pixel_put(int x, int y, t_img *img, int color)
 	if (x <  0 || x >= 800 || y < 0 || y >= 800)
 		return ;
 	offset = (y * img->line_len) + (x * (img->bpp / 8));
-	*(unsigned int *)(img->img_ptr + offset) = color;
+	*(int *)(img->pixels_ptr + offset) = color;
 }
 
 static void mandel_vs_julia(t_complex *z, t_complex *c, t_fractal *fractal)
@@ -47,22 +47,19 @@ static void handel_pixel(int x, int y, t_fractal *fractal)
    z.x = ((map(x, -2, 2, 0, 800) * fractal->zoom)) + fractal->shift_x;
    z.y = ((map(y, -2, 2, 0, 800) * fractal->zoom)) + fractal->shift_y;
    mandel_vs_julia(&z, &c, fractal);
-	while (i < 42)
+	while (i < fractal->iter)
 	{
 		z = sum_complex(square_complex(z), c);
-		if ((z.x * z.x) + (z.y * z.y) > 4)
-		{
-			color = map(i, 0x000000, 0xFFFFFF, 0, 42);
-			my_pixel_put(x, y, &fractal->image, color);
-			return ;
-		}
+		if ((z.x * z.x) + (z.y * z.y) > 2)
+			return (i * fractal->color);
 		i++;
 	}
-	my_pixel_put(x, y, &fractal->image, 0x000000);
+	return (0);
 }
 
 void fractal_render(t_fractal *fractal)
 {
+int   coolor;
    int   x;
    int   y;
 
@@ -72,7 +69,8 @@ void fractal_render(t_fractal *fractal)
       x = 0;
       while (x < 800)
       {
-         handel_pixel(x, y, fractal);
+         color = handel_pixel(x, y, fractal);
+         my_pixel_put(x, y, fractal->image,color);
          x++;
       }
       y++;

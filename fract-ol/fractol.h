@@ -39,11 +39,13 @@ typedef struct s_fractal
 	void	*mlx_connection;
 	void	*mlx_window;
 	t_img	image;
+	unsigned int	color;
 	double	shift_x;
 	double	shift_y;
 	double	zoom;
 	double	julia_x;
 	double	julia_y;
+	int		iter;
 }					t_fractal;
 
 // init
@@ -64,5 +66,6 @@ double	atodbl(char *str);
 // moves
 int	key_handler(int key, void *param);
 void	close_handler(t_fractal *fractal);
+int	mouse_handler(int key, t_fractal *fractal);
 
 #endif

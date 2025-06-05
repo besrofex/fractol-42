@@ -20,16 +20,21 @@ static void	ft_error()
 
 static void	data_init(t_fractal *fractal)
 {
+	fractal->color = 0x00050707;
 	fractal->shift_x = 0.0;
 	fractal->shift_y = 0.0;
 	fractal->zoom = 1.0;
+	fractal->iter = 100;
 }
 
 static void	event_init(t_fractal *fractal)
 {
-	mlx_hook(fractal->mlx_window, 2, 0, key_handler, fractal);
-	// mlx_hook(fractal->mlx_window, 4, , mouse_handler, fractal);
+	mlx_key_hook(fractal->mlx_window, key_handler, fractal);
+	mlx_mouse_hook(fractal->mlx_window, mouse_handler, fractal);
 	mlx_hook(fractal->mlx_window, 17, 0, close_handler, fractal);
+
+	// mlx_hook(fractal->mlx_window, 2, 0, key_handler, fractal);
+	// mlx_hook(fractal->mlx_window, 4, , mouse_handler, fractal);
 	// mlx_hook(fractal->mlx_window, 6, , julia_track, fractal);
 }
 
@@ -52,8 +57,10 @@ void	fractal_init(t_fractal *fractal)
 		free(fractal->mlx_connection);
 		ft_error();
 	}
-	fractal->image.img_ptr = mlx_get_data_addr(fractal->image.img_ptr, &fractal->image.bpp,
+	fractal->image.pixels_ptr = mlx_get_data_addr(fractal->image.img_ptr, &fractal->image.bpp,
 																&fractal->image.line_len, &fractal->image.endian);
-	// event_init(fractal);
+	if (NULL == fractal->image.pixels_ptr)
+		ft_error();	
 	data_init(fractal);
+	event_init(fractal);
 }

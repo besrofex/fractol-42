@@ -17,7 +17,7 @@ int	main(int ac, char **av)
 	t_fractal	fractal;
 
 	if ((2 == ac && ft_strncmp(av[1], "mandelbrot", 10) == 0)
-		|| (4 == ac && ft_strncmp(av[1], "julia", 5) == 0))
+		|| (4 == ac && ft_strncmp(av[1], "julia", 5) == 0))//verifier les valeur de julia est-il valide ??
 	{
 		fractal.name = av[1];
 		if (ft_strncmp(fractal.name, "julia", 5) == 0)

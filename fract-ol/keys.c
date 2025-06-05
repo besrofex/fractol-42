@@ -17,22 +17,30 @@ void	close_handler(t_fractal *fractal)
 	mlx_destroy_image(fractal->mlx_connection, fractal->image.img_ptr);
 	mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
 	free(fractal->mlx_connection);
-	exit(0);
+	exit(1);
 }
 
 int	key_handler(int key, void *param)
 {
 	t_fractal *fractal = (t_fractal *)param;
-	if (key == 65307)
+	if (key == 53)
 		close_handler(fractal);
-	if (key == 65361)
-		fractal->shift_x += fractal->zoom * 0.5;
-	else if (key == 65363)
-		fractal->shift_x -= fractal->zoom * 0.5;
-	else if (key == 65362)
-		fractal->shift_y -= fractal->zoom * 0.5;
-	else if (key == 65364)
-		fractal->shift_y += fractal->zoom * 0.5;
+	else if (key == 11)
+		fractal->zoom = 1;
+	else if (key == 69)
+		fractal->iter += 10;
+	else if (key == 78)
+		fractal.iter -= 10;
+	fractal_render(fractal);
+	return (0);
+}
+
+int	mouse_handler(int key, t_fractal *fractal)
+{
+	if (key == 4)
+	fractal->zoom *= 1.10;
+	else if(key == 5)
+		fractal->zoom *= 0.90;
 	fractal_render(fractal);
 	return (0);
 }
