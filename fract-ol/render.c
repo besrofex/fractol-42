@@ -6,7 +6,7 @@
 /*   By: ylabser <ylabser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 15:28:34 by ylabser           #+#    #+#             */
-/*   Updated: 2025/02/28 22:11:25 by ylabser          ###   ########.fr       */
+/*   Updated: 2025/06/06 18:34:01 by ylabser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int handel_pixel(int x, int y, t_fractal *fractal)
    t_complex   z;
    t_complex   c;
    int         i;
-   int         color;
+   // int         color;
 
    i = 0;
    z.x = ((map(x, -2, 2, 0, 800) * fractal->zoom)) + fractal->shift_x;
@@ -70,7 +70,7 @@ int   color;
       while (x < 800)
       {
          color = handel_pixel(x, y, fractal);
-         my_pixel_put(x, y, fractal->image,color);
+         my_pixel_put(x, y, &fractal->image,color);
          x++;
       }
       y++;
