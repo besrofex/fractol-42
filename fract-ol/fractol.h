@@ -6,7 +6,7 @@
 /*   By: ylabser <ylabser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:43:49 by ylabser           #+#    #+#             */
-/*   Updated: 2025/02/28 21:46:27 by ylabser          ###   ########.fr       */
+/*   Updated: 2025/06/07 17:35:46 by ylabser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,8 @@ t_complex	square_complex(t_complex c);
 t_complex	sum_complex(t_complex a, t_complex b);
 double	map(double value, double new_min, double new_max, double old_min, double old_max);
 
-// str_utils
+// main
 int	ft_strncmp(const char *s1, const char *s2, int n);
-double	atodbl(char *str);
 
 // moves
 int	key_handler(int key, void *param);
