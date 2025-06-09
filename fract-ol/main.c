@@ -24,6 +24,54 @@ int	ft_strncmp(const char *s1, const char *s2, int n)
 	return (s1[i] - s2[i]);
 }
 
+static int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+static int	is_digit(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == '\0')
+		return (1);
+	while (str[i] <= 32)
+		i++;
+	if ((str[i] == '-' || str[i] == '+' || str[i] == '.') && str[i + 1] == '\0')
+		return (1);
+	else if ((str[i] == '+' || str[i] == '-') && str[i + 1] == '.')
+		return (1);
+	else
+		return (0);
+}
+
+static int	valide_input(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] <= 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+		i++;
+	if (str[i] == '.')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+		i++;
+	if (ft_strlen(str) != i || is_digit(str))
+		return (1);
+	else
+		return (0);
+}
+
 static double	atodbl(char *str)
 {
 	double	nbr_int;
@@ -66,8 +114,10 @@ int	main(int ac, char **av)
 {
 	t_fractal	fractal;
 
+	printf("adam\n");
 	if ((2 == ac && ft_strncmp(av[1], "mandelbrot", 10) == 0)
-		|| (4 == ac && ft_strncmp(av[1], "julia", 5) == 0))//verifier les valeur de julia est-il valide ??
+		||(4 == ac && !ft_strncmp(av[1], "julia", 5) 
+		&& !valide_input(av[2]) && !valide_input(av[3])))
 	{
 		fractal.name = av[1];
 		if (ft_strncmp(fractal.name, "julia", 5) == 0)
@@ -81,6 +131,7 @@ int	main(int ac, char **av)
 	}
 	else
 	{
+		printf("labser\n");
 		write(2, "Error\n", 6);
 		exit(1);
 	}
