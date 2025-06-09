@@ -6,7 +6,7 @@
 /*   By: ylabser <ylabser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 15:28:34 by ylabser           #+#    #+#             */
-/*   Updated: 2025/06/09 17:08:07 by ylabser          ###   ########.fr       */
+/*   Updated: 2025/06/09 20:04:55 by ylabser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,25 +48,23 @@ static int handel_pixel(int x, int y, t_fractal *fractal)
 
 void fractal_render(t_fractal *fractal)
 {
-	int   color;
-	int	offset;
-   int   x;
-   int   y;
+    int   color;
+    int   off;
+    int   x;
+    int   y;
 
-   y = 0;
-   while (y < 800)
-   {
-      x = 0;
-      while (x < 800)
-      {
-         color = handel_pixel(x, y, fractal);
-			// if (x <  0 || x > 800 || y < 0 || y > 800)
-			// 	return ;
-			offset = (y * fractal->image.line_len) + x * (fractal->image.bpp / 8);
-			*(int *)(fractal->image.pixels_ptr + offset) = color;
-         x++;
-      }
-      y++;
-   }
-	mlx_put_image_to_window(fractal->mlx_connection, fractal->mlx_window, fractal->image.img_ptr, 0, 0);
+    y = 0;
+    while (y < 800)
+    {
+        x = 0;
+        while (x < 800)
+        {
+            color = handel_pixel(x, y, fractal);
+            off = (y * fractal->image.line_len) + (x * (fractal->image.bpp / 8));
+            *(unsigned int *)(fractal->image.pixels_ptr + off) = (unsigned int)color;
+            x++;
+        }
+        y++;
+    }
+    mlx_put_image_to_window(fractal->mlx_connection, fractal->mlx_window, fractal->image.img_ptr, 0, 0);
 }
