@@ -6,11 +6,16 @@
 /*   By: ylabser <ylabser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 15:28:34 by ylabser           #+#    #+#             */
-/*   Updated: 2025/06/09 14:15:18 by ylabser          ###   ########.fr       */
+/*   Updated: 2025/06/09 17:08:07 by ylabser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+static double	map(double value, double new_min, double new_max, double old_min, double old_max)
+{
+	return ((new_max - new_min) * (value - old_min) / (old_max - old_min) + new_min);
+}
 
 static int handel_pixel(int x, int y, t_fractal *fractal)
 {
@@ -55,10 +60,9 @@ void fractal_render(t_fractal *fractal)
       while (x < 800)
       {
          color = handel_pixel(x, y, fractal);
-         // my_pixel_put(x, y, &fractal->image,color);
-			if (x <  0 || x >= 800 || y < 0 || y >= 800)
-				return ;
-			offset = (y * fractal->image.line_len) + (x * (fractal->image.bpp / 8));
+			// if (x <  0 || x > 800 || y < 0 || y > 800)
+			// 	return ;
+			offset = (y * fractal->image.line_len) + x * (fractal->image.bpp / 8);
 			*(int *)(fractal->image.pixels_ptr + offset) = color;
          x++;
       }

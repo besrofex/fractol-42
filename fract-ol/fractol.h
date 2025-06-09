@@ -6,7 +6,7 @@
 /*   By: ylabser <ylabser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:43:49 by ylabser           #+#    #+#             */
-/*   Updated: 2025/06/09 14:16:03 by ylabser          ###   ########.fr       */
+/*   Updated: 2025/06/09 17:12:40 by ylabser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,7 @@ void fractal_render(t_fractal *fractal);
 // math utils
 t_complex	square_complex(t_complex c);
 t_complex	sum_complex(t_complex a, t_complex b);
-double	map(double value, double new_min, double new_max, double old_min, double old_max);
-
-// main
+int	ft_strlen(char *str);
 int	ft_strncmp(const char *s1, const char *s2, int n);
 
 // moves

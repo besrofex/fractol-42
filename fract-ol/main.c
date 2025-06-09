@@ -6,31 +6,11 @@
 /*   By: ylabser <ylabser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:33:32 by ylabser           #+#    #+#             */
-/*   Updated: 2025/06/09 14:16:54 by ylabser          ###   ########.fr       */
+/*   Updated: 2025/06/09 17:12:16 by ylabser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-int	ft_strncmp(const char *s1, const char *s2, int n)
-{
-	int	i;
-
-	i = 0;
-	while (i < n && s1[i] == s2[i] && s2[i])
-		i++;
-	return (s1[i] - s2[i]);
-}
-
-static int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
 static int	is_digit(char *str)
 {

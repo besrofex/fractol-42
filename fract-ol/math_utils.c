@@ -6,7 +6,7 @@
 /*   By: ylabser <ylabser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 15:40:17 by ylabser           #+#    #+#             */
-/*   Updated: 2025/02/28 16:56:29 by ylabser          ###   ########.fr       */
+/*   Updated: 2025/06/09 17:12:25 by ylabser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,22 @@ t_complex	sum_complex(t_complex a, t_complex b)
 	return (z);
 }
 
-double	map(double value, double new_min, double new_max, double old_min, double old_max)
+int	ft_strncmp(const char *s1, const char *s2, int n)
 {
-	return ((new_max - new_min) * (value - old_min) / (old_max - old_min) + new_min);
+	int	i;
+
+	i = 0;
+	while (i < n && s1[i] == s2[i] && s2[i])
+		i++;
+	return (s1[i] - s2[i]);
+}
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
