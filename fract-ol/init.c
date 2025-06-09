@@ -6,25 +6,16 @@
 /*   By: ylabser <ylabser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 16:27:18 by ylabser           #+#    #+#             */
-/*   Updated: 2025/02/28 18:46:51 by ylabser          ###   ########.fr       */
+/*   Updated: 2025/06/09 14:17:40 by ylabser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void	ft_error()
+void	ft_error()
 {
 	write(2, "Error\n", 6);
 	exit(1);
-}
-
-static void	data_init(t_fractal *fractal)
-{
-	fractal->color = 0x00050707;
-	fractal->shift_x = 0.0;
-	fractal->shift_y = 0.0;
-	fractal->zoom = 1.0;
-	fractal->iter = 100;
 }
 
 static void	event_init(t_fractal *fractal)
@@ -32,10 +23,6 @@ static void	event_init(t_fractal *fractal)
 	mlx_key_hook(fractal->mlx_window, key_handler, fractal);
 	mlx_mouse_hook(fractal->mlx_window, mouse_handler, fractal);
 	mlx_hook(fractal->mlx_window, 17, 0, close_handler, fractal);
-
-	// mlx_hook(fractal->mlx_window, 2, 0, key_handler, fractal);
-	// mlx_hook(fractal->mlx_window, 4, , mouse_handler, fractal);
-	// mlx_hook(fractal->mlx_window, 6, , julia_track, fractal);
 }
 
 void	fractal_init(t_fractal *fractal)
@@ -61,6 +48,5 @@ void	fractal_init(t_fractal *fractal)
 																&fractal->image.line_len, &fractal->image.endian);
 	if (NULL == fractal->image.pixels_ptr)
 		ft_error();	
-	data_init(fractal);
 	event_init(fractal);
 }

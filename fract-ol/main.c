@@ -6,7 +6,7 @@
 /*   By: ylabser <ylabser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:33:32 by ylabser           #+#    #+#             */
-/*   Updated: 2025/06/07 17:36:08 by ylabser          ###   ########.fr       */
+/*   Updated: 2025/06/09 14:16:54 by ylabser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ int	ft_strncmp(const char *s1, const char *s2, int n)
 	int	i;
 
 	i = 0;
-	// if (NULL == s1 || NULL == s2 || n <= 0)
-	// 	return (0);
 	while (i < n && s1[i] == s2[i] && s2[i])
 		i++;
 	return (s1[i] - s2[i]);
@@ -114,7 +112,6 @@ int	main(int ac, char **av)
 {
 	t_fractal	fractal;
 
-	printf("adam\n");
 	if ((2 == ac && ft_strncmp(av[1], "mandelbrot", 10) == 0)
 		||(4 == ac && !ft_strncmp(av[1], "julia", 5) 
 		&& !valide_input(av[2]) && !valide_input(av[3])))
@@ -125,14 +122,15 @@ int	main(int ac, char **av)
 			fractal.julia_x = atodbl(av[2]);
 			fractal.julia_y = -atodbl(av[3]);
 		}
+		fractal.color = 0x00090907;
+		fractal.zoom = 1.0;
+		fractal.iter = 100;
 		fractal_init(&fractal);
 		fractal_render(&fractal);
 		mlx_loop(fractal.mlx_connection);
 	}
 	else
 	{
-		printf("labser\n");
-		write(2, "Error\n", 6);
-		exit(1);
+		ft_error();
 	}
 }

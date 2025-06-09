@@ -6,7 +6,7 @@
 /*   By: ylabser <ylabser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:43:49 by ylabser           #+#    #+#             */
-/*   Updated: 2025/06/07 17:35:46 by ylabser          ###   ########.fr       */
+/*   Updated: 2025/06/09 14:16:03 by ylabser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ typedef struct s_fractal
 	void	*mlx_window;
 	t_img	image;
 	unsigned int	color;
-	double	shift_x;
-	double	shift_y;
 	double	zoom;
 	double	julia_x;
 	double	julia_y;
@@ -51,6 +49,7 @@ typedef struct s_fractal
 
 // init
 void	fractal_init(t_fractal *fractal);
+void	ft_error();
 
 // render
 void fractal_render(t_fractal *fractal);
