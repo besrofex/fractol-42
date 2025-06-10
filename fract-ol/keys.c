@@ -6,7 +6,7 @@
 /*   By: ylabser <ylabser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 18:28:16 by ylabser           #+#    #+#             */
-/*   Updated: 2025/06/10 19:06:09 by ylabser          ###   ########.fr       */
+/*   Updated: 2025/06/10 20:57:42 by ylabser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ int	close_handler(t_fractal *fractal)
 
 int	key_handler(int key, void *param)
 {
-	t_fractal *fractal = (t_fractal *)param;
+	t_fractal	*fractal;
+
+	fractal = (t_fractal *)param;
 	if (key == 53)
 		close_handler(fractal);
 	else if (key == 11)
@@ -37,10 +39,12 @@ int	key_handler(int key, void *param)
 
 int	mouse_handler(int key, void *param)
 {
-	t_fractal *fractal = (t_fractal *)param;
+	t_fractal	*fractal;
+
+	fractal = (t_fractal *)param;
 	if (key == 4)
-	fractal->zoom *= 1.10;
-	else if(key == 5)
+		fractal->zoom *= 1.10;
+	else if (key == 5)
 		fractal->zoom *= 0.90;
 	fractal_render(fractal);
 	return (0);

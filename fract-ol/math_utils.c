@@ -6,7 +6,7 @@
 /*   By: ylabser <ylabser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 15:40:17 by ylabser           #+#    #+#             */
-/*   Updated: 2025/06/09 17:12:25 by ylabser          ###   ########.fr       */
+/*   Updated: 2025/06/10 21:01:52 by ylabser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_complex	square_complex(t_complex c)
 {
-	t_complex z;
+	t_complex	z;
 
 	z.x = (c.x * c.x) - (c.y * c.y);
 	z.y = 2 * c.x * c.y;
