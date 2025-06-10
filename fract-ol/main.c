@@ -6,7 +6,7 @@
 /*   By: ylabser <ylabser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:33:32 by ylabser           #+#    #+#             */
-/*   Updated: 2025/06/10 20:56:11 by ylabser          ###   ########.fr       */
+/*   Updated: 2025/06/10 21:41:22 by ylabser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,25 +65,20 @@ static double	atodbl(char *str)
 	pow = 1;
 	while (str[i] <= 32)
 		i++;
-	while (str[i] == '+' || str[i] == '-')
+	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
 			sign = -1;
 		i++;
 	}
 	while (str[i] >= '0' && str[i] <= '9')
-	{
-		nbr_int *= 10;
-		nbr_int += str[i] - '0';
-		i++;
-	}
+		nbr_int = str[i++] - '0' + (nbr_int * 10);
 	if ('.' == str[i])
 		i++;
 	while (str[i])
 	{
 		pow /= 10;
-		nbr_frc += (str[i] - '0') * pow;
-		i++;
+		nbr_frc += (str[i++] - '0') * pow;
 	}
 	return (sign * (nbr_int + nbr_frc));
 }
@@ -111,6 +106,7 @@ int	main(int ac, char **av)
 	}
 	else
 	{
-		ft_error();
+		write(2, "Error\n", 6);
+		exit(1);
 	}
 }

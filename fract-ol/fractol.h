@@ -6,7 +6,7 @@
 /*   By: ylabser <ylabser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:43:49 by ylabser           #+#    #+#             */
-/*   Updated: 2025/06/10 21:23:42 by ylabser          ###   ########.fr       */
+/*   Updated: 2025/06/10 21:35:15 by ylabser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct s_fractal
 
 // init
 void		fractal_init(t_fractal *fractal);
-void		ft_error(void);
 
 // render
 void		fractal_render(t_fractal *fractal);

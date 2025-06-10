@@ -6,15 +6,15 @@
 /*   By: ylabser <ylabser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 16:27:18 by ylabser           #+#    #+#             */
-/*   Updated: 2025/06/10 21:01:20 by ylabser          ###   ########.fr       */
+/*   Updated: 2025/06/10 21:36:07 by ylabser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	ft_error(void)
+static void	ft_error2(void *ptr)
 {
-	write(2, "Error\n", 6);
+	free(ptr);
 	exit(1);
 }
 
@@ -29,20 +29,16 @@ void	fractal_init(t_fractal *fractal)
 {
 	fractal->mlx_connection = mlx_init();
 	if (NULL == fractal->mlx_connection)
-		ft_error();
+		exit(1);
 	fractal->mlx_window = mlx_new_window(fractal->mlx_connection,
 			800, 800, fractal->name);
 	if (NULL == fractal->mlx_window)
-	{
-		free(fractal->mlx_connection);
-		ft_error();
-	}
+		ft_error2(fractal->mlx_connection);
 	fractal->image.img_ptr = mlx_new_image(fractal->mlx_connection, 800, 800);
 	if (NULL == fractal->image.img_ptr)
 	{
 		mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
-		free(fractal->mlx_connection);
-		ft_error();
+		ft_error2(fractal->mlx_connection);
 	}
 	fractal->image.pixels_ptr = mlx_get_data_addr(fractal->image.img_ptr,
 			&fractal->image.bpp, &fractal->image.line_len,
@@ -51,8 +47,7 @@ void	fractal_init(t_fractal *fractal)
 	{
 		mlx_destroy_image(fractal->mlx_connection, fractal->image.img_ptr);
 		mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
-		free(fractal->mlx_connection);
-		ft_error();
+		ft_error2(fractal->mlx_connection);
 	}
 	event_init(fractal);
 }
