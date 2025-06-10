@@ -6,7 +6,7 @@
 /*   By: ylabser <ylabser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:43:49 by ylabser           #+#    #+#             */
-/*   Updated: 2025/06/09 17:12:40 by ylabser          ###   ########.fr       */
+/*   Updated: 2025/06/10 19:05:29 by ylabser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ int	ft_strncmp(const char *s1, const char *s2, int n);
 // moves
 int	key_handler(int key, void *param);
 int	close_handler(t_fractal *fractal);
-int	mouse_handler(int key,int x ,int y, void *param);
+int	mouse_handler(int key, void *param);
 
 #endif
