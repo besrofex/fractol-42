@@ -6,7 +6,7 @@
 /*   By: ylabser <ylabser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 18:28:16 by ylabser           #+#    #+#             */
-/*   Updated: 2025/06/10 20:57:42 by ylabser          ###   ########.fr       */
+/*   Updated: 2025/06/10 21:23:32 by ylabser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,12 @@ int	key_handler(int key, void *param)
 	return (0);
 }
 
-int	mouse_handler(int key, void *param)
+int	mouse_handler(int key, int x, int y, void *param)
 {
 	t_fractal	*fractal;
 
+	(void)x;
+	(void)y;
 	fractal = (t_fractal *)param;
 	if (key == 4)
 		fractal->zoom *= 1.10;
