@@ -6,14 +6,18 @@
 /*   By: ylabser <ylabser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 15:28:34 by ylabser           #+#    #+#             */
-/*   Updated: 2025/06/10 21:12:23 by ylabser          ###   ########.fr       */
+/*   Updated: 2025/06/11 16:41:42 by ylabser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static double	map(double value, double new_min, double new_max, double old_min, double old_max)
+static double	map(double value, double new_min, double new_max,
+	double old_min)
 {
+	double	old_max;
+
+	old_max = 800;
 	return ((new_max - new_min) * (value - old_min)
 		/ (old_max - old_min) + new_min);
 }
@@ -25,8 +29,8 @@ static int	handel_pixel(int x, int y, t_fractal *fractal)
 	int			i;
 
 	i = 0;
-	z.x = ((map(x, -2, 2, 0, 800) * fractal->zoom));
-	z.y = ((map(y, -2, 2, 0, 800) * fractal->zoom));
+	z.x = ((map(x, -2, 2, 0) * fractal->zoom));
+	z.y = ((map(y, -2, 2, 0) * fractal->zoom));
 	if (ft_strncmp(fractal->name, "julia", 5) == 0)
 	{
 		c.x = fractal->julia_x;

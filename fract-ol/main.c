@@ -6,7 +6,7 @@
 /*   By: ylabser <ylabser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:33:32 by ylabser           #+#    #+#             */
-/*   Updated: 2025/06/10 21:41:22 by ylabser          ###   ########.fr       */
+/*   Updated: 2025/06/11 16:32:21 by ylabser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,33 @@ static int	valide_input(char *str)
 		return (0);
 }
 
+static double	parse_fractional(char *str, int *i)
+{
+	double	nbr_frc;
+	double	pow;
+
+	nbr_frc = 0;
+	pow = 1;
+	if (str[*i] == '.')
+		(*i)++;
+	while (str[*i] >= '0' && str[*i] <= '9')
+	{
+		pow /= 10;
+		nbr_frc += (str[(*i)++] - '0') * pow;
+	}
+	return (nbr_frc);
+}
+
 static double	atodbl(char *str)
 {
 	double	nbr_int;
 	double	nbr_frc;
-	double	pow;
 	int		i;
 	int		sign;
 
 	i = 0;
 	sign = 1;
 	nbr_int = 0;
-	nbr_frc = 0;
-	pow = 1;
 	while (str[i] <= 32)
 		i++;
 	if (str[i] == '+' || str[i] == '-')
@@ -73,13 +87,7 @@ static double	atodbl(char *str)
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 		nbr_int = str[i++] - '0' + (nbr_int * 10);
-	if ('.' == str[i])
-		i++;
-	while (str[i])
-	{
-		pow /= 10;
-		nbr_frc += (str[i++] - '0') * pow;
-	}
+	nbr_frc = parse_fractional(str, &i);
 	return (sign * (nbr_int + nbr_frc));
 }
 
