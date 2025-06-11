@@ -6,7 +6,7 @@
 /*   By: ylabser <ylabser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 14:43:49 by ylabser           #+#    #+#             */
-/*   Updated: 2025/06/10 21:35:15 by ylabser          ###   ########.fr       */
+/*   Updated: 2025/06/11 16:49:54 by ylabser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <math.h>
-# include <stdio.h>
 # include "./mlx.h"
 
 typedef struct s_complex
